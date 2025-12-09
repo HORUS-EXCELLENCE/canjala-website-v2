@@ -1,0 +1,14 @@
+# Folders to ignore
+build/
+dist/
+.venv/
+env/
+venv/
+__pycache__/
+node_modules/
+
+# Files to ignore
+*.log
+*.sqlite3
+.DS_Store
+.env
