@@ -64,12 +64,19 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.8 }}
           >
-            <h1 className="text-6xl md:text-8xl lg:text-9xl font-black mb-6 leading-none">
-              CANJALA
-            </h1>
-            <p className="text-xl md:text-3xl font-bold mb-4 text-accent">
-              A Kitota Virou Festival
-            </p>
+            <div className="mb-0 pb-0">
+  <img 
+    src="/logo_canjala.png"
+    className="mx-auto mb-0 pb-0"
+    style={{ height: "450px" }}
+    alt="Logo"
+  />
+</div>
+
+<p className="text-xl md:text-3xl font-bold text-accent mt-[-35px]">
+  A Kitota Virou Festival
+</p>
+
             <p className="text-lg md:text-xl mb-8 max-w-2xl mx-auto opacity-90">
               Canjala não é só um lugar, Canjala é a essência de Angola, é a raiz, é o encontro daqueles que celebram juntos as suas vitórias
             </p>
@@ -89,7 +96,7 @@ export default function Home() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1, duration: 1 }}
-            className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
+            className="absolute bottom-5 left-1/2 transform -translate-x-1/2"
           >
             <div className="flex flex-col items-center gap-2">
               <p className="text-sm font-semibold">Descobre mais</p>
@@ -113,7 +120,7 @@ export default function Home() {
               { number: "4.360+", label: "Participantes 2024", icon: Users },
               { number: "11", label: "Edições Realizadas", icon: Calendar },
               { number: "100%", label: "Convocações Esgotadas", icon: Ticket },
-              { number: "2018", label: "Ano de Fundação", icon: Music }
+              { number: "2017", label: "Ano de Fundação", icon: Music }
             ].map((stat, index) => (
               <motion.div
                 key={index}
@@ -148,7 +155,7 @@ export default function Home() {
                 A Canjala é mais do que um festival de música, é o que em Kimbundu chamamos de Kitota. É uma celebração da cultura angolana, um espaço onde a música, a arte e a comunidade se encontram. A prova de que podemos começar num quintal e expandir pro país inteiro.
               </p>
               <p className="text-lg md:text-xl mb-6 opacity-90">
-                Desde 2018, temos reunido milhares de pessoas em torno da nossa paixão partilhada pela música, pela cultura e pela vida. A Canjala é o carro chefe de um sonho que começou com 50 pessoas dentro de um quintal pequeno e hoje invade a mente de todos que escutam o som zumbido do mosquito.
+                Desde 2017, temos reunido milhares de pessoas em torno da nossa paixão partilhada pela música, pela cultura e pela vida. A Canjala é o carro chefe de um sonho que começou com 50 pessoas dentro de um quintal pequeno e hoje invade a mente de todos que escutam o som zumbido do mosquito.
               </p>
             </motion.div>
             <motion.div
@@ -332,13 +339,15 @@ export default function Home() {
                 <div className="bg-card p-6 rounded-lg shadow-md">
                   <div className="flex items-baseline gap-4 mb-2">
                     <span className="text-3xl font-black text-primary">{item.year}</span>
-                    {item.participants && (
-                      <span className="text-2xl font-bold text-accent">{item.participants} pessoas</span>
-                    )}
+                    
                     {item.title && (
                       <span className="text-2xl font-bold">{item.title}</span>
                     )}
                   </div>
+
+                    {item.participants && (
+                      <span className="text-2xl font-bold text-accent">{item.participants} pessoas</span>
+                    )}
                   <p className="text-muted-foreground">{item.description}</p>
                 </div>
               </motion.div>
