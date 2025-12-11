@@ -1,14 +1,16 @@
+import React, { useState } from 'react';
 import { useAuth } from "@/_core/hooks/useAuth";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Calendar, MapPin, Music, Users, Instagram, Facebook, Youtube, Ticket } from "lucide-react";
+import { Calendar, MapPin, Music, Users, Instagram, Facebook, Youtube, Ticket, Menu, X } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function Home() {
   const { user } = useAuth();
   const { t } = useLanguage();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
     <div className="min-h-screen">
@@ -40,7 +42,94 @@ export default function Home() {
               {t("Convocatórias", "Tickets 2025")}
             </Button>
           </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            className="md:hidden p-2"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Toggle menu"
+          >
+            {mobileMenuOpen ? (
+              <X className="h-6 w-6" />
+            ) : (
+              <Menu className="h-6 w-6" />
+            )}
+          </button>
         </div>
+
+        {/* Mobile Menu Dropdown */}
+        {mobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            className="md:hidden bg-background border-t border-border"
+          >
+            <div className="container mx-auto flex flex-col gap-4 py-4">
+              <a
+                href="#sobre"
+                className="text-sm font-semibold hover:text-primary transition-colors py-2"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {t("Sobre", "About")}
+              </a>
+              <a
+                href="#experiencia"
+                className="text-sm font-semibold hover:text-primary transition-colors py-2"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {t("Experiência", "Experience")}
+              </a>
+              <a
+                href="#historia"
+                className="text-sm font-semibold hover:text-primary transition-colors py-2"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {t("História", "History")}
+              </a>
+              <a
+                href="https://loja.canjala.com"
+                className="text-sm font-semibold hover:text-primary transition-colors py-2"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {t("Loja", "Store")}
+              </a>
+              <a
+                href="#contacto"
+                className="text-sm font-semibold hover:text-primary transition-colors py-2"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {t("Contacto", "Contact")}
+              </a>
+              <div className="border-t border-border pt-4 mt-4">
+                <div className="flex items-center gap-4 mb-4">
+                  <LanguageSwitcher />
+                </div>
+                {user?.role === "admin" && (
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    onClick={() => {
+                      window.location.href = "/admin";
+                      setMobileMenuOpen(false);
+                    }}
+                    className="w-full mb-2"
+                  >
+                    Admin
+                  </Button>
+                )}
+                <Button
+                  size="lg"
+                  className="bg-primary hover:bg-primary/90 w-full"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  <Ticket className="mr-2 h-4 w-4" />
+                  {t("Convocatórias", "Tickets 2025")}
+                </Button>
+              </div>
+            </div>
+          </motion.div>
+        )}
       </nav>
 
       {/* Hero Section - Full Screen with Parallax Effect */}
@@ -166,7 +255,7 @@ export default function Home() {
               className="relative"
             >
               <img 
-                src="/crowd-celebration.jpg" 
+                src="/crowd.jpg" 
                 alt="Celebração Canjala" 
                 className="rounded-lg shadow-2xl"
               />
@@ -200,7 +289,7 @@ export default function Home() {
               className="relative h-96 rounded-lg overflow-hidden group"
             >
               <img 
-                src="/stage-production.jpg" 
+                src="/palco.jpg" 
                 alt="Produção de Palco" 
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
               />
@@ -278,7 +367,7 @@ export default function Home() {
               className="order-2 md:order-1"
             >
               <img 
-                src="/cultural-celebration.jpg" 
+                src="/cultural.png" 
                 alt="Celebração Cultural" 
                 className="rounded-lg shadow-2xl"
               />
