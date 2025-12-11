@@ -155,12 +155,7 @@ export default function Home() {
             transition={{ delay: 0.3, duration: 0.8 }}
           >
             <div className="mb-0 pb-0">
-  <img 
-    src="/logo_canjala.png"
-    className="mx-auto mb-0 pb-0"
-    style={{ height: "450px" }}
-    alt="Logo"
-  />
+  <h1 className="text-5xl md:text-8xl font-black mb-20 mt-30">CANJALA</h1>
 </div>
 
 <p className="text-xl md:text-3xl font-bold text-accent mt-[-35px]">
@@ -307,11 +302,19 @@ export default function Home() {
               transition={{ delay: 0.1 }}
               className="relative h-96 rounded-lg overflow-hidden group"
             >
-              <img 
-                src="/festival-atmosphere.jpg" 
-                alt="Atmosfera do Festival" 
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-              />
+              <video 
+                autoPlay
+                muted
+                loop
+                className="w-full h-full object-cover"
+              >
+                <source src="/festival-atmosphere.mp4" type="video/mp4" />
+                <img 
+                  src="/festival-atmosphere.jpg" 
+                  alt="Atmosfera do Festival" 
+                  className="w-full h-full object-cover"
+                />
+              </video>
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-8">
                 <h3 className="text-3xl font-black text-white mb-2">Experiência Completa</h3>
