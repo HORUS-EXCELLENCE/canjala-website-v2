@@ -27,6 +27,7 @@ export default function Home() {
             <a href="#sobre" className="text-sm font-semibold hover:text-primary transition-colors">{t("Sobre", "About")}</a>
             <a href="#experiencia" className="text-sm font-semibold hover:text-primary transition-colors">{t("Experiência", "Experience")}</a>
             <a href="#historia" className="text-sm font-semibold hover:text-primary transition-colors">{t("História", "History")}</a>
+            <a href="https://loja.canjala.com" className="text-sm font-semibold hover:text-primary transition-colors">{t("Loja", "Store")}</a>
             <a href="#contacto" className="text-sm font-semibold hover:text-primary transition-colors">{t("Contacto", "Contact")}</a>
             <LanguageSwitcher />
             {user?.role === "admin" && (
