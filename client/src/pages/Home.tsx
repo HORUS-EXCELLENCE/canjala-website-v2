@@ -78,7 +78,7 @@ export default function Home() {
   A Kitota Virou Festival
 </p>
 
-            <p className="text-lg md:text-xl mb-8 max-w-2xl mx-auto opacity-90">
+            <p className="text-lg md:text-xl mb-7 max-w-2xl mx-auto opacity-90">
               Canjala não é só um lugar, Canjala é a essência de Angola, é a raiz, é o encontro daqueles que celebram juntos as suas vitórias
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -86,10 +86,10 @@ export default function Home() {
                 <Ticket className="mr-2 h-5 w-5" />
                 Obter Convocatória
               </Button>
-              <Button size="lg" variant="outline" className="bg-white/10 backdrop-blur-sm border-white/30 text-white hover:bg-white/20 text-lg px-8 py-6">
+              <a href="https://youtu.be/Yk38mn3g8Iw"><Button size="lg" variant="outline" className="bg-white/10 backdrop-blur-sm border-white/30 text-white hover:bg-white/20 text-lg px-8 py-6">
                 <Music className="mr-2 h-5 w-5" />
                 Ver Aftermovie
-              </Button>
+              </Button></a>
             </div>
           </motion.div>
 
@@ -97,7 +97,7 @@ export default function Home() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1, duration: 1 }}
-            className="absolute bottom-5 left-1/2 transform -translate-x-1/2"
+            className="absolute bottom-0 top-165 left-1/2 transform -translate-x-1/2"
           >
             <div className="flex flex-col items-center gap-2">
               <p className="text-sm font-semibold">Descobre mais</p>
