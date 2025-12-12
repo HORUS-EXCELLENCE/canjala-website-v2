@@ -302,19 +302,11 @@ export default function Home() {
               transition={{ delay: 0.1 }}
               className="relative h-96 rounded-lg overflow-hidden group"
             >
-              <video 
-                autoPlay
-                muted
-                loop
-                className="w-full h-full object-cover"
-              >
-                <source src="/festival-atmosphere.mp4" type="video/mp4" />
-                <img 
-                  src="/festival-atmosphere.jpg" 
-                  alt="Atmosfera do Festival" 
-                  className="w-full h-full object-cover"
-                />
-              </video>
+              <img 
+                src="/festival-atmosphere.jpg" 
+                alt="Atmosfera do Festival" 
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+              />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-8">
                 <h3 className="text-3xl font-black text-white mb-2">Experiência Completa</h3>
@@ -367,13 +359,22 @@ export default function Home() {
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="order-2 md:order-1"
+              className="order-2 md:order-1 rounded-lg overflow-hidden shadow-2xl"
+              style={{ width: '600px', height: '1000px' }}
             >
-              <img 
-                src="/cultural.png" 
-                alt="Celebração Cultural" 
-                className="rounded-lg shadow-2xl"
-              />
+              <video 
+                autoPlay
+                muted
+                loop
+                className="w-full h-full object-cover"
+              >
+                <source src="/video.mp4" type="video/mp4" />
+                <img 
+                  src="/cultural.png" 
+                  alt="Celebração Cultural" 
+                  className="w-full h-full object-cover"
+                />
+              </video>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, x: 30 }}
