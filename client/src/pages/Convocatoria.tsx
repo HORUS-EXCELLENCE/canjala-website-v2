@@ -14,14 +14,15 @@ interface FAQItem {
 }
 
 const FAQComponent: React.FC = () => {
-  const [openItem, setOpenItem] = useState<number | null>(2);
+  const { t } = useLanguage();
+  const [openItem, setOpenItem] = useState<number | null>(1);
 
   const faqData: FAQItem[] = [
-    { id: 1, question: 'Chamber reached do he nothing be?', answer: 'Our asked six point her she seems. New plenty she horses parish design you.' },
-    { id: 2, question: 'Stuff sight equal of my woody?', answer: 'Our asked six point her she seems. New plenty she horses parish design you.' },
-    { id: 3, question: 'At by pleasure of children be?', answer: 'Our asked six point her she seems. New plenty she horses parish design you.' },
-    { id: 4, question: 'Amounted repeated as believed in confined?', answer: 'Our asked six point her she seems. New plenty she horses parish design you.' },
-    { id: 5, question: 'In am do giving to afford parish settle easily garret?', answer: 'Our asked six point her she seems. New plenty she horses parish design you.' },
+    { id: 1, question: t('O que é a convocatória?', 'What is the convocation?'), answer: t('Para o mundo, a convocatória é o convite, ingresso ou ticket para aceder a um evento. Mas para nós, a convocatória é o chamado, mensagem ou o grito para quem realmente merece fazer parte. Quando o Marechal ou um dos generais manda aquela mensagem, então, tu estás convocado ou chamado a fazer parte.', 'For the world, the convocation is the invitation, ticket or ticket to access an event. But for us, the convocation is the call, message or shout for those who really deserve to be part. When the Marechal or one of the generals sends that message, then you are summoned or called to be part.') },
+    { id: 2, question: t('Onde eu devo comprar a minha convocatória?', 'Where should I buy my convocation?'), answer: t('As convocatórias são vendidas exclusivamente no aplicativo Uzeka.', 'Convocations are sold exclusively in the Uzeka app.') },
+    { id: 3, question: t('Qualquer indivíduo pode comprar a sua convocatória?', 'Can anyone buy their convocation?'), answer: t('O público geral não pode simplesmente comprar a convocatória. As chamadas convocatórias são adquiridas apenas por quem já participou de edições anteriores do evento e estes podem recrutar novos participantes, criando assim a sensação de pertença, de exclusividade e acima de tudo garantir uma segurança maior do evento.', 'The general public cannot simply buy the convocation. The convocation calls are acquired only by those who have participated in previous editions of the event and they can recruit new participants, thus creating a sense of belonging, exclusivity and above all ensuring greater event security.') },
+    { id: 4, question: t('Os Batalhões podem convocar?', 'Can the Battalions summon?'), answer: t('Quando estás dentro de um Batalhão, serás convocado directamente por um dos generais do Batalhão; mas também é possível seres convocado directamente pelo Marechal.', 'When you are inside a Battalion, you will be summoned directly by one of the Battalion generals; but it is also possible to be summoned directly by the Marechal.') },
+    { id: 5, question: t('Posso me registar para receber uma convocatória?', 'Can I register to receive a convocation?'), answer: t('Sim… O nome deste registo é alistamento.', 'Yes... The name of this registration is enlistment.') },
   ];
 
   const toggleItem = (id: number) => setOpenItem((prev) => (prev === id ? null : id));
@@ -95,12 +96,11 @@ export default function Home() {
         <div className="container">
           <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="max-w-4xl mx-auto text-center py-20">
             <h2 className="text-5xl md:text-6xl font-black mb-6">
-              Garanta a sua <span className="text-primary">convocatória</span>
+              {t("Garanta a sua", "Secure your")} <span className="text-primary">{t("convocatória", "convocation")}</span>
             </h2>
-            <p className="text-xl text-muted-foreground mb-8">label</p>
             <div className="prose prose-lg max-w-none mx-auto">
               <p className="text-lg">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sunt, dolor! Esse aperiam, veniam eum iusto voluptates placeat pariatur blanditiis iure dolorum praesentium qui provident sit sapiente aliquam numquam reprehenderit quod.
+                {t("Para o mundo, a convocatória é o convite, ingresso ou ticket para aceder a um evento. Mas para nós, a convocatória é o chamado, mensagem ou o grito para quem realmente merece fazer parte.", "For the world, the convocation is the invitation, ticket or ticket to access an event. But for us, the convocation is the call, message or shout for those who really deserve to be part.")}
               </p>
             </div>
             <FAQComponent />
@@ -110,31 +110,31 @@ export default function Home() {
         
 
         {/* CTA Section */}
-        <section id="contacto" className="py-20 bg-gradient-to-br from-primary via-secondary to-accent text-white relative overflow-hidden">
+        <section id="contacto" className="py-0 bg-gradient-to-br from-primary via-secondary to-accent text-white relative overflow-hidden">
           <div className="absolute inset-0 opacity-10">
             <div className="absolute inset-0" style={{ backgroundImage: "url('/hero-canjala.jpg')", backgroundSize: 'cover', backgroundPosition: 'center' }} />
           </div>
           <div className="container relative">
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="max-w-4xl mx-auto text-center py-12">
-              <h2 className="text-2xl md:text-4xl font-black mb-6">Faça Parte da Lista de Convocatórias 2026</h2>
+              <h2 className="text-2xl md:text-4xl font-black mb-6">{t("Faça Parte da Lista de Convocatórias 2026", "Join the 2026 Convocations List")}</h2>
 
               <form className="flex max-w-md flex-col gap-4 mx-auto">
                 <div className="flex flex-col gap-1">
-                  <Label htmlFor="nome" className="text-left text-white">Nome</Label>
+                  <Label htmlFor="nome" className="text-left text-white">{t("Nome", "Name")}</Label>
                   <TextInput id="nome" type="text" sizing="sm" />
                 </div>
 
                 <div className="flex flex-col gap-1">
-                  <Label htmlFor="email" className="text-left text-white">Email</Label>
+                  <Label htmlFor="email" className="text-left text-white">{t("Email", "Email")}</Label>
                   <TextInput id="email" type="email" sizing="sm" />
                 </div>
 
                 <div className="flex flex-col gap-1">
-                  <Label htmlFor="phone" className="text-left text-white">Número de telemóvel usado no Uzeka</Label>
+                  <Label htmlFor="phone" className="text-left text-white">{t("Número de telemóvel usado no Uzeka", "Mobile number used in Uzeka")}</Label>
                   <TextInput id="phone" type="text" sizing="sm" />
                 </div>
 
-                <Button type="submit">Registrar</Button>
+                <Button type="submit">{t("Registrar", "Register")}</Button>
               </form>
             </motion.div>
           </div>
@@ -148,26 +148,26 @@ export default function Home() {
           <div className="grid md:grid-cols-4 gap-12 mb-12">
             <div>
               <img src="/logo.png" alt="Canjala" className="h-16 w-auto mb-4" />
-              <p className="opacity-80">A Kitota virou Festival</p>
+              <p className="opacity-80">{t("A Kitota virou Festival", "The Kitota became Festival")}</p>
             </div>
             <div>
-              <h4 className="font-bold mb-4">Links Rápidos</h4>
+              <h4 className="font-bold mb-4">{t("Links Rápidos", "Quick Links")}</h4>
               <ul className="space-y-2 opacity-80">
-                <li><a href="#sobre" className="hover:opacity-100 transition-opacity">Sobre</a></li>
-                <li><a href="#experiencia" className="hover:opacity-100 transition-opacity">Experiência</a></li>
-                <li><a href="#historia" className="hover:opacity-100 transition-opacity">História</a></li>
-                <li><a href="#contacto" className="hover:opacity-100 transition-opacity">Contacto</a></li>
+                <li><a href="#sobre" className="hover:opacity-100 transition-opacity">{t("Sobre", "About")}</a></li>
+                <li><a href="#experiencia" className="hover:opacity-100 transition-opacity">{t("Experiência", "Experience")}</a></li>
+                <li><a href="#historia" className="hover:opacity-100 transition-opacity">{t("História", "History")}</a></li>
+                <li><a href="#contacto" className="hover:opacity-100 transition-opacity">{t("Contacto", "Contact")}</a></li>
               </ul>
             </div>
             <div>
-              <h4 className="font-bold mb-4">Festivais</h4>
+              <h4 className="font-bold mb-4">{t("Festivais", "Festivals")}</h4>
               <ul className="space-y-2 opacity-80">
-                <li>Canjala Festival</li>
-                <li>Acordos de Bicesse</li>
+                <li>{t("Canjala Festival", "Canjala Festival")}</li>
+                <li>{t("Acordos de Bicesse", "Acordos de Bicesse")}</li>
               </ul>
             </div>
             <div>
-              <h4 className="font-bold mb-4">Redes Sociais</h4>
+              <h4 className="font-bold mb-4">{t("Redes Sociais", "Social Media")}</h4>
               <div className="flex gap-4">
                 <a href="https://www.instagram.com/teamarrogancia/" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
                   <Instagram className="h-6 w-6" />
@@ -188,7 +188,7 @@ export default function Home() {
           </div>
 
           <div className="border-t border-background/20 pt-8 text-center opacity-60">
-            <p>&copy; 2025 Team Arrogância. Todos os direitos reservados.</p>
+            <p>&copy; 2025 {t("Team Arrogância. Todos os direitos reservados.", "Team Arrogância. All rights reserved.")}</p>
           </div>
         </div>
       </footer>

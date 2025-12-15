@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useAuth } from "@/_core/hooks/useAuth";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
@@ -7,10 +7,27 @@ import { Card } from "@/components/ui/card";
 import { Calendar, MapPin, Music, Users, Instagram, Facebook, Youtube, Ticket, Menu, X } from "lucide-react";
 import { motion } from "framer-motion";
 
+interface Product {
+  id: number;
+  name: string;
+  full_cover: string;
+  price: string;
+  qty_in_stock: number;
+  type: string;
+}
+
 export default function Home() {
   const { user } = useAuth();
   const { t } = useLanguage();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [products, setProducts] = useState<Product[]>([]);
+
+  useEffect(() => {
+    fetch('https://backend.canjala.com/api/loja/products')
+      .then(res => res.json())
+      .then((data: Product[]) => setProducts(data.filter(product => product.type !== 'download')))
+      .catch(err => console.error('Error fetching products:', err));
+  }, []);
 
   return (
     <div className="min-h-screen">
@@ -29,7 +46,7 @@ export default function Home() {
             <a href="#sobre" className="text-sm font-semibold hover:text-primary transition-colors">{t("Sobre", "About")}</a>
             <a href="#experiencia" className="text-sm font-semibold hover:text-primary transition-colors">{t("Experiência", "Experience")}</a>
             <a href="#historia" className="text-sm font-semibold hover:text-primary transition-colors">{t("História", "History")}</a>
-            <a href="https://loja.canjala.com" className="text-sm font-semibold hover:text-primary transition-colors">{t("Loja", "Store")}</a>
+            <a href="#merch" className="text-sm font-semibold hover:text-primary transition-colors">{t("Loja", "Store")}</a>
             <a href="#contacto" className="text-sm font-semibold hover:text-primary transition-colors">{t("Contacto", "Contact")}</a>
             <LanguageSwitcher />
             {user?.role === "admin" && (
@@ -37,10 +54,10 @@ export default function Home() {
                 Admin
               </Button>
             )}
-            <Button size="lg" className="bg-primary hover:bg-primary/90">
+            <a href="/convocatoria"><Button size="lg" className="bg-primary hover:bg-primary/90">
               <Ticket className="mr-2 h-4 w-4" />
               {t("Convocatórias", "Tickets 2025")}
-            </Button>
+            </Button></a>
           </div>
 
           {/* Mobile Menu Button */}
@@ -88,7 +105,7 @@ export default function Home() {
                 {t("História", "History")}
               </a>
               <a
-                href="https://loja.canjala.com"
+                href="#merch"
                 className="text-sm font-semibold hover:text-primary transition-colors py-2"
                 onClick={() => setMobileMenuOpen(false)}
               >
@@ -118,14 +135,14 @@ export default function Home() {
                     Admin
                   </Button>
                 )}
-                <Button
+                <a href="/convocatoria"><Button
                   size="lg"
                   className="bg-primary hover:bg-primary/90 w-full"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   <Ticket className="mr-2 h-4 w-4" />
                   {t("Convocatórias", "Tickets 2025")}
-                </Button>
+                </Button></a>
               </div>
             </div>
           </motion.div>
@@ -159,20 +176,20 @@ export default function Home() {
 </div>
 
 <p className="text-xl md:text-3xl font-bold text-accent mt-[-35px]">
-  A Kitota Virou Festival
+  {t("A Kitota Virou Festival", "The Kitota Became Festival")}
 </p>
 
             <p className="text-lg md:text-xl mb-7 max-w-2xl mx-auto opacity-90">
-              Canjala não é só um lugar, Canjala é a essência de Angola, é a raiz, é o encontro daqueles que celebram juntos as suas vitórias
+              {t("Canjala não é só um lugar, Canjala é a essência de Angola, é a raiz, é o encontro daqueles que celebram juntos as suas vitórias", "Canjala is not just a place, Canjala is the essence of Angola, it is the root, it is the meeting of those who celebrate their victories together")}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-primary hover:bg-primary/90 text-lg px-8 py-6">
+              <a href="/convocatoria"><Button size="lg" className="bg-primary hover:bg-primary/90 text-lg px-8 py-6">
                 <Ticket className="mr-2 h-5 w-5" />
-                Obter Convocatória
-              </Button>
+                {t("Obter Convocatória", "Get Tickets")}
+              </Button></a>
               <a href="https://youtu.be/Yk38mn3g8Iw"><Button size="lg" variant="outline" className="bg-white/10 backdrop-blur-sm border-white/30 text-white hover:bg-white/20 text-lg px-8 py-6">
                 <Music className="mr-2 h-5 w-5" />
-                Ver Aftermovie
+                {t("Ver Aftermovie", "Watch Aftermovie")}
               </Button></a>
             </div>
           </motion.div>
@@ -184,7 +201,7 @@ export default function Home() {
             className="absolute bottom-0 top-165 left-1/2 transform -translate-x-1/2"
           >
             <div className="flex flex-col items-center gap-2">
-              <p className="text-sm font-semibold">Descobre mais</p>
+              <p className="text-sm font-semibold">{t("Descobre mais", "Discover more")}</p>
               <div className="w-6 h-10 border-2 border-white rounded-full flex items-start justify-center p-2">
                 <motion.div
                   animate={{ y: [0, 12, 0] }}
@@ -202,10 +219,10 @@ export default function Home() {
         <div className="container">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
-              { number: "4.360+", label: "Participantes 2024", icon: Users },
-              { number: "11", label: "Edições Realizadas", icon: Calendar },
-              { number: "100%", label: "Convocações Esgotadas", icon: Ticket },
-              { number: "2017", label: "Ano de Fundação", icon: Music }
+              { number: "4.360+", label: t("Participantes 2024", "2024 Participants"), icon: Users },
+              { number: "11", label: t("Edições Realizadas", "Editions Held"), icon: Calendar },
+              { number: "100%", label: t("Convocações Esgotadas", "Tickets Sold Out"), icon: Ticket },
+              { number: "2018", label: t("Ano de Fundação", "Year Founded"), icon: Music }
             ].map((stat, index) => (
               <motion.div
                 key={index}
@@ -234,13 +251,13 @@ export default function Home() {
               viewport={{ once: true }}
             >
               <h2 className="text-5xl md:text-6xl font-black mb-6">
-                A Essência de Angola
+                {t("A Essência de Angola", "The Essence of Angola")}
               </h2>
               <p className="text-lg md:text-xl mb-6 opacity-90">
-                A Canjala é mais do que um festival de música, é o que em Kimbundu chamamos de Kitota. É uma celebração da cultura angolana, um espaço onde a música, a arte e a comunidade se encontram. A prova de que podemos começar num quintal e expandir pro país inteiro.
+                {t("A Canjala é mais do que um festival de música, é o que em Kimbundu chamamos de Kitota. É uma celebração da cultura angolana, um espaço onde a música, a arte e a comunidade se encontram. A prova de que podemos começar num quintal e expandir pro país inteiro.", "Canjala is more than a music festival, it's what we call Kitota in Kimbundu. It's a celebration of Angolan culture, a space where music, art and community meet. Proof that we can start in a backyard and expand to the whole country.")}
               </p>
               <p className="text-lg md:text-xl mb-6 opacity-90">
-                Desde 2017, temos reunido milhares de pessoas em torno da nossa paixão partilhada pela música, pela cultura e pela vida. A Canjala é o carro chefe de um sonho que começou com 50 pessoas dentro de um quintal pequeno e hoje invade a mente de todos que escutam o som zumbido do mosquito.
+                {t("Desde 2018, temos reunido milhares de pessoas em torno da nossa paixão partilhada pela música, pela cultura e pela vida. A Canjala é o carro chefe de um sonho que começou com 50 pessoas dentro de um quintal pequeno e hoje invade a mente de todos que escutam o som zumbido do mosquito.", "Since 2018, we have gathered thousands of people around our shared passion for music, culture and life. Canjala is the flagship of a dream that started with 50 people in a small backyard and today invades the minds of all who hear the buzzing sound of the mosquito.")}
               </p>
             </motion.div>
             <motion.div
@@ -269,10 +286,10 @@ export default function Home() {
             className="text-center mb-16"
           >
             <h2 className="text-5xl md:text-6xl font-black mb-6">
-              Uma Experiência <span className="text-primary">Imersiva</span>
+              {t("Uma Experiência", "An Experience")} <span className="text-primary">{t("Imersiva", "Immersive")}</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Produção de classe mundial, tecnologia de ponta e uma atmosfera que só Angola pode criar
+              {t("Produção de classe mundial, tecnologia de ponta e uma atmosfera que só Angola pode criar", "World-class production, cutting-edge technology and an atmosphere that only Angola can create")}
             </p>
           </motion.div>
 
@@ -290,8 +307,8 @@ export default function Home() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-8">
-                <h3 className="text-3xl font-black text-white mb-2">Palco Espectacular</h3>
-                <p className="text-white/90">Design geométrico complexo com ecrãs LED de alta resolução e iluminação profissional</p>
+                <h3 className="text-3xl font-black text-white mb-2">{t("Palco Espectacular", "Spectacular Stage")}</h3>
+                <p className="text-white/90">{t("Design geométrico complexo com ecrãs LED de alta resolução e iluminação profissional", "Complex geometric design with high-resolution LED screens and professional lighting")}</p>
               </div>
             </motion.div>
 
@@ -309,8 +326,8 @@ export default function Home() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-8">
-                <h3 className="text-3xl font-black text-white mb-2">Experiência Completa</h3>
-                <p className="text-white/90">Gastronomia, arte interactiva e instalações que criam momentos inesquecíveis</p>
+                <h3 className="text-3xl font-black text-white mb-2">{t("Experiência Completa", "Complete Experience")}</h3>
+                <p className="text-white/90">{t("Gastronomia, arte interactiva e instalações que criam momentos inesquecíveis", "Gastronomy, interactive art and installations that create unforgettable moments")}</p>
               </div>
             </motion.div>
           </div>
@@ -319,18 +336,18 @@ export default function Home() {
             {[
               {
                 icon: Music,
-                title: "Música que Move",
-                description: "Dos melhores DJs nacionais aos artistas internacionais..."
+                title: t("Música que Move", "Music that Moves"),
+                description: t("Dos melhores DJs nacionais aos artistas internacionais...", "From the best national DJs to international artists...")
               },
               {
                 icon: Users,
-                title: "Cultura Viva",
-                description: "Arte urbana, performances ao vivo, danças inovadoras..."
+                title: t("Cultura Viva", "Living Culture"),
+                description: t("Arte urbana, performances ao vivo, danças inovadoras...", "Urban art, live performances, innovative dances...")
               },
               {
                 icon: MapPin,
-                title: "Comunidade Unida",
-                description: "Os batalhões são mais do que espectadores, são uma grande família..."
+                title: t("Comunidade Unida", "United Community"),
+                description: t("Os batalhões são mais do que espectadores, são uma grande família...", "The battalions are more than spectators, they are a big family...")
               }
             ].map((feature, index) => (
               <motion.div
@@ -383,13 +400,13 @@ export default function Home() {
               className="order-1 md:order-2"
             >
               <h2 className="text-5xl md:text-6xl font-black mb-6">
-                Tradição e Inovação
+                {t("Tradição e Inovação", "Tradition and Innovation")}
               </h2>
               <p className="text-lg md:text-xl mb-6 opacity-90">
-                O Canjala celebra o casamento perfeito entre a tradição angolana e a inovação contemporânea. Aqui, os tambores ancestrais encontram os beats electrónicos, e as gerações dançam juntas ao ritmo da nossa cultura.
+                {t("O Canjala celebra o casamento perfeito entre a tradição angolana e a inovação contemporânea. Aqui, os tambores ancestrais encontram os beats electrónicos, e as gerações dançam juntas ao ritmo da nossa cultura.", "Canjala celebrates the perfect marriage between Angolan tradition and contemporary innovation. Here, ancestral drums meet electronic beats, and generations dance together to the rhythm of our culture.")}
               </p>
               <p className="text-lg md:text-xl opacity-90">
-                Como diz a música "Reunir" de Teta Lando, que resume a essência dos nossos eventos: celebramos as conquistas de todos, acreditamos que é possível fazer em Angola, e continuamos a crescer juntos.
+                {t("Como diz a música \"Reunir\" de Teta Lando, que resume a essência dos nossos eventos: celebramos as conquistas de todos, acreditamos que é possível fazer em Angola, e continuamos a crescer juntos.", "As the song \"Reunir\" by Teta Lando says, which summarizes the essence of our events: we celebrate everyone's achievements, we believe it is possible to do in Angola, and we continue to grow together.")}
               </p>
             </motion.div>
           </div>
@@ -406,20 +423,20 @@ export default function Home() {
             className="text-center mb-16"
           >
             <h2 className="text-5xl md:text-6xl font-black mb-6">
-              O Nosso <span className="text-primary">Crescimento</span>
+              {t("O Nosso", "Our")} <span className="text-primary">{t("Crescimento", "Growth")}</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Desde 2017, o Canjala tem crescido exponencialmente, consolidando-se como o maior festival de Angola
+              {t("Desde 2018, o Canjala tem crescido exponencialmente, consolidando-se como o maior festival de Angola", "Since 2018, Canjala has grown exponentially, establishing itself as Angola's largest festival")}
             </p>
           </motion.div>
 
           <div className="max-w-4xl mx-auto">
             {[
-              { year: "2017", title: "O Início", participants: "287", description: "Zenza do Itombe como teste de conceito. 50 pessoas num quintal, 287 compareceram" },
-              { year: "2018-2019", title: "Crescimento", description: "Da Canjala 2018 ao Kuito Kuanavale 2018, de 400 a 1600 pessoas. Expansão durante tempos desafiantes" },
-              { year: "2022-2023", title: "Consolidação", description: "Acordos de Bicesse. Milhares de pessoas reunidas" },
-              { year: "2024", title: "Recorde", participants: "4.360+", description: "Recorde de participantes e produção de classe mundial" },
-              { year: "2025", title: "O Futuro", description: "Expectativa de crescimento contínuo e novas surpresas" }
+              { year: "2018", title: t("O Início", "The Beginning"), participants: "287", description: t("Zenza do Itombe como teste de conceito. 50 pessoas num quintal, 287 compareceram", "Zenza do Itombe as a concept test. 50 people in a backyard, 287 attended") },
+              { year: "2018-2019", title: t("Crescimento", "Growth"), description: t("Da Canjala 2018 ao Kuito Kuanavale 2018, de 400 a 1600 pessoas. Expansão durante tempos desafiantes", "From Canjala 2018 to Kuito Kuanavale 2018, from 400 to 1600 people. Expansion during challenging times") },
+              { year: "2022-2023", title: t("Consolidação", "Consolidation"), description: t("Acordos de Bicesse. Milhares de pessoas reunidas", "Acordos de Bicesse. Thousands of people gathered") },
+              { year: "2024", title: t("Recorde", "Record"), participants: "4.360+", description: t("Recorde de participantes e produção de classe mundial", "Record number of participants and world-class production") },
+              { year: "2025", title: t("O Futuro", "The Future"), description: t("Expectativa de crescimento contínuo e novas surpresas", "Expectation of continuous growth and new surprises") }
             ].map((item, index) => (
               <motion.div
                 key={index}
@@ -440,12 +457,80 @@ export default function Home() {
                   </div>
 
                     {item.participants && (
-                      <span className="text-2xl font-bold text-accent">{item.participants} pessoas</span>
+                      <span className="text-2xl font-bold text-accent">{item.participants} {t("pessoas", "people")}</span>
                     )}
                   <p className="text-muted-foreground">{item.description}</p>
                 </div>
               </motion.div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Products Section */}
+      <section className="py-10 bg-background" id='merch'>
+        <div className="container">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-5xl md:text-6xl font-black mb-6">
+              {t("Kitota", "Kitota")} <span className="text-primary">{t("Merch", "Merch")}</span>
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              {t("Confira nossa loja oficial com produtos exclusivos e merchandising", "Check out our official store with exclusive products and merchandise")}
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {products.slice(0, 8).map((product: Product) => (
+              <motion.div
+                key={product.id}
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.1 }}
+              >
+                <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 group">
+                  <div className="relative overflow-hidden">
+                    <img 
+                      src={product.full_cover} 
+                      alt={product.name} 
+                      className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  </div>
+                  <div className="p-6">
+                    <h3 className="font-bold text-lg mb-2 line-clamp-2">{product.name}</h3>
+                    <div className="flex items-center justify-between mb-4">
+                      <span className="text-2xl font-black text-primary">{product.price} Kz</span>
+                      {product.qty_in_stock > 0 && (
+                        <span className="text-sm text-green-600 font-semibold">{t("Em stock", "In stock")}</span>
+                      )}
+                    </div>
+                    <Button 
+                      className="w-full bg-primary hover:bg-primary/90" 
+                      onClick={() => window.open('https://loja.canjala.com', '_blank')}
+                    >
+                      {t("Ver na Loja", "View in Store")}
+                    </Button>
+                  </div>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+
+          <div className="text-center mt-12">
+            <Button 
+              size="lg" 
+              variant="outline" 
+              className="px-8 py-4 text-lg font-semibold border-primary text-primary hover:bg-primary hover:text-white"
+              onClick={() => window.open('https://loja.canjala.com', '_blank')}
+            >
+              {t("Ver Mais Produtos", "See More Products")}
+            </Button>
           </div>
         </div>
       </section>
@@ -460,16 +545,16 @@ export default function Home() {
             className="max-w-4xl mx-auto text-center"
           >
             <h2 className="text-5xl md:text-6xl font-black mb-6">
-              Acordos de Bicesse
+              {t("Acordos de Bicesse", "Acordos de Bicesse")}
             </h2>
             <p className="text-xl md:text-2xl mb-8">
-              O Segundo Maior Festival
+              {t("O Segundo Maior Festival", "The Second Largest Festival")}
             </p>
             <p className="text-lg mb-8 opacity-90">
-              Um festival temático, com narrativa e storytelling forte, conceito visual e mensagem própria, que reinterpretam o espírito dos Acordos de Bicesse de 1991, mas agora como símbolo de unidade, esperança e cultura.
+              {t("Um festival temático, com narrativa e storytelling forte, conceito visual e mensagem própria, que reinterpretam o espírito dos Acordos de Bicesse de 1991, mas agora como símbolo de unidade, esperança e cultura.", "A thematic festival, with strong narrative and storytelling, visual concept and own message, that reinterpret the spirit of the Acordos de Bicesse of 1991, but now as a symbol of unity, hope and culture.")}
             </p>
             <Button size="lg" variant="outline" className="bg-white/10 backdrop-blur-sm border-white/30 hover:bg-white/20">
-              Saber Mais sobre Acordos de Bicesse
+              {t("Saber Mais sobre Acordos de Bicesse", "Learn More about Acordos de Bicesse")}
             </Button>
           </motion.div>
         </div>
@@ -485,20 +570,20 @@ export default function Home() {
             className="max-w-4xl mx-auto"
           >
             <h2 className="text-5xl md:text-6xl font-black mb-6 text-center">
-              Team <span className="text-primary">Arrogância</span>
+              {t("Team", "Team")} <span className="text-primary">{t("Arrogância", "Arrogância")}</span>
             </h2>
             <p className="text-xl text-center text-muted-foreground mb-12">
-              Nós inventamos a próxima cena
+              {t("Nós inventamos a próxima cena", "We invent the next scene")}
             </p>
             <div className="prose prose-lg max-w-none">
               <p className="text-lg mb-6">
-                O Team Arrogância é um colectivo criativo angolano que nasceu da necessidade de produzir experiências culturais com identidade, propósito e profundidade narrativa angolana. O grupo reúne profissionais de diversos campos – música, produção, design, cinema, estratégia, engenharia, finanças, marketing e storytelling – que partilham a mesma visão: Elevar o entretenimento nacional a um patamar conceptual, artístico e tecnicamente irrepreensível. Cada projecto carrega uma assinatura própria, marcada pela ousadia, simbologia e capacidade de transformar ideias abstractas em espectáculos sensoriais.
+                {t("O Team Arrogância é um colectivo criativo angolano que nasceu da necessidade de produzir experiências culturais com identidade, propósito e profundidade narrativa angolana. O grupo reúne profissionais de diversos campos – música, produção, design, cinema, estratégia, engenharia, finanças, marketing e storytelling – que partilham a mesma visão: Elevar o entretenimento nacional a um patamar conceptual, artístico e tecnicamente irrepreensível. Cada projecto carrega uma assinatura própria, marcada pela ousadia, simbologia e capacidade de transformar ideias abstractas em espectáculos sensoriais.", "Team Arrogância is an Angolan creative collective born from the need to produce cultural experiences with Angolan identity, purpose and narrative depth. The group brings together professionals from various fields – music, production, design, cinema, strategy, engineering, finance, marketing and storytelling – who share the same vision: Elevate national entertainment to a conceptually, artistically and technically impeccable level. Each project carries its own signature, marked by boldness, symbolism and the ability to transform abstract ideas into sensory spectacles.")}
               </p>
               <p className="text-lg mb-6">
-                O colectivo tem como objectivo principal criar projectos, narrativas e universos que desafiam a forma tradicional de fazer negócios em Angola. O Team Arrogância trabalha com pilares sólidos: Excelência criativa, respeito pela identidade angolana, inovação constante e a procura por novas maneiras de conectar o público às histórias que contam. Os seus festivais e produções não são apenas actos de entretenimento, mas experiências que incorporam reflexão, memória, espiritualidade, estética e emoção.
+                {t("O colectivo tem como objectivo principal criar projectos, narrativas e universos que desafiam a forma tradicional de fazer negócios em Angola. O Team Arrogância trabalha com pilares sólidos: Excelência criativa, respeito pela identidade angolana, inovação constante e a procura por novas maneiras de conectar o público às histórias que contam. Os seus festivais e produções não são apenas actos de entretenimento, mas experiências que incorporam reflexão, memória, espiritualidade, estética e emoção.", "The collective's main objective is to create projects, narratives and universes that challenge the traditional way of doing business in Angola. Team Arrogância works with solid pillars: Creative excellence, respect for Angolan identity, constant innovation and the search for new ways to connect the public to the stories they tell. Their festivals and productions are not just acts of entertainment, but experiences that incorporate reflection, memory, spirituality, aesthetics and emotion.")}
               </p>
               <p className="text-lg">
-                Além da criação de espectáculos, o Team Arrogância pretende contribuir para a profissionalização do sector artístico e cultural, abrindo espaço para novos talentos, estimulando colaborações e promovendo um ecossistema criativo sustentável. O colectivo busca consolidar-se como uma força motriz da cultura contemporânea angolana, capaz de influenciar gerações, fortalecer a produção nacional e exportar conceitos que representem, com dignidade e ambição, o potencial artístico de Angola.
+                {t("Além da criação de espectáculos, o Team Arrogância pretende contribuir para a profissionalização do sector artístico e cultural, abrindo espaço para novos talentos, estimulando colaborações e promovendo um ecossistema criativo sustentável. O colectivo busca consolidar-se como uma força motriz da cultura contemporânea angolana, capaz de influenciar gerações, fortalecer a produção nacional e exportar conceitos que representem, com dignidade e ambição, o potencial artístico de Angola.", "In addition to creating spectacles, Team Arrogância aims to contribute to the professionalization of the artistic and cultural sector, opening space for new talents, encouraging collaborations and promoting a sustainable creative ecosystem. The collective seeks to establish itself as a driving force in contemporary Angolan culture, capable of influencing generations, strengthening national production and exporting concepts that represent, with dignity and ambition, Angola's artistic potential.")}
               </p>
             </div>
           </motion.div>
@@ -518,18 +603,18 @@ export default function Home() {
             className="max-w-4xl mx-auto text-center"
           >
             <h2 className="text-5xl md:text-7xl font-black mb-6">
-              Canjala 2025
+              {t("Canjala 2025", "Canjala 2025")}
             </h2>
             <p className="text-2xl md:text-3xl mb-8 font-bold">
-              A Kitota Espera Por Ti
+              {t("A Kitota Espera Por Ti", "The Kitota Awaits You")}
             </p>
             <p className="text-xl mb-12 opacity-90">
-              As convocações esgotam em dias. Não percas a oportunidade de fazer parte da maior celebração cultural de Angola.
+              {t("As convocações esgotam em dias. Não percas a oportunidade de fazer parte da maior celebração cultural de Angola.", "Tickets sell out in days. Don't miss the opportunity to be part of Angola's biggest cultural celebration.")}
             </p>
-            <Button size="lg" className="bg-white text-primary hover:bg-white/90 text-xl px-12 py-8 font-bold">
+            <a href="/convocatoria"><Button size="lg" className="bg-white text-primary hover:bg-white/90 text-xl px-12 py-8 font-bold">
               <Ticket className="mr-3 h-6 w-6" />
-              Garantir Minha Convocatória
-            </Button>
+              {t("Garantir Minha Convocatória", "Secure My Ticket")}
+            </Button></a>
           </motion.div>
         </div>
       </section>
@@ -540,26 +625,26 @@ export default function Home() {
           <div className="grid md:grid-cols-4 gap-12 mb-12">
             <div>
               <img src="/logo.png" alt="Canjala" className="h-16 w-auto mb-4" />
-              <p className="opacity-80">A Kitota virou Festival</p>
+              <p className="opacity-80">{t("A Kitota virou Festival", "The Kitota became Festival")}</p>
             </div>
             <div>
-              <h4 className="font-bold mb-4">Links Rápidos</h4>
+              <h4 className="font-bold mb-4">{t("Links Rápidos", "Quick Links")}</h4>
               <ul className="space-y-2 opacity-80">
-                <li><a href="#sobre" className="hover:opacity-100 transition-opacity">Sobre</a></li>
-                <li><a href="#experiencia" className="hover:opacity-100 transition-opacity">Experiência</a></li>
-                <li><a href="#historia" className="hover:opacity-100 transition-opacity">História</a></li>
-                <li><a href="#contacto" className="hover:opacity-100 transition-opacity">Contacto</a></li>
+                <li><a href="#sobre" className="hover:opacity-100 transition-opacity">{t("Sobre", "About")}</a></li>
+                <li><a href="#experiencia" className="hover:opacity-100 transition-opacity">{t("Experiência", "Experience")}</a></li>
+                <li><a href="#historia" className="hover:opacity-100 transition-opacity">{t("História", "History")}</a></li>
+                <li><a href="#contacto" className="hover:opacity-100 transition-opacity">{t("Contacto", "Contact")}</a></li>
               </ul>
             </div>
             <div>
-              <h4 className="font-bold mb-4">Festivais</h4>
+              <h4 className="font-bold mb-4">{t("Festivais", "Festivals")}</h4>
               <ul className="space-y-2 opacity-80">
-                <li>Canjala Festival</li>
-                <li>Acordos de Bicesse</li>
+                <li>{t("Canjala Festival", "Canjala Festival")}</li>
+                <li>{t("Acordos de Bicesse", "Acordos de Bicesse")}</li>
               </ul>
             </div>
             <div>
-              <h4 className="font-bold mb-4">Redes Sociais</h4>
+              <h4 className="font-bold mb-4">{t("Redes Sociais", "Social Media")}</h4>
               <div className="flex gap-4">
                 <a href="https://www.instagram.com/teamarrogancia/" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
                   <Instagram className="h-6 w-6" />
@@ -579,7 +664,7 @@ export default function Home() {
             </div>
           </div>
           <div className="border-t border-background/20 pt-8 text-center opacity-60">
-            <p>&copy; 2025 Team Arrogância. Todos os direitos reservados.</p>
+            <p>&copy; 2025 {t("Team Arrogância. Todos os direitos reservados.", "Team Arrogância. All rights reserved.")}</p>
           </div>
         </div>
       </footer>
