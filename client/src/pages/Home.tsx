@@ -223,7 +223,7 @@ export default function Home() {
               { number: "4.360+", label: t("Participantes 2024", "2024 Participants"), icon: Users },
               { number: "11", label: t("Edições Realizadas", "Editions Held"), icon: Calendar },
               { number: "100%", label: t("Convocações Esgotadas", "Tickets Sold Out"), icon: Ticket },
-              { number: "2018", label: t("Ano de Fundação", "Year Founded"), icon: Music }
+              { number: "2017", label: t("Ano de Fundação", "Year Founded"), icon: Music }
             ].map((stat, index) => (
               <motion.div
                 key={index}
@@ -258,7 +258,7 @@ export default function Home() {
                 {t("A Canjala é mais do que um festival de música, é o que em Kimbundu chamamos de Kitota. É uma celebração da cultura angolana, um espaço onde a música, a arte e a comunidade se encontram. A prova de que podemos começar num quintal e expandir pro país inteiro.", "Canjala is more than a music festival, it's what we call Kitota in Kimbundu. It's a celebration of Angolan culture, a space where music, art and community meet. Proof that we can start in a backyard and expand to the whole country.")}
               </p>
               <p className="text-lg md:text-xl mb-6 opacity-90">
-                {t("Desde 2018, temos reunido milhares de pessoas em torno da nossa paixão partilhada pela música, pela cultura e pela vida. A Canjala é o carro chefe de um sonho que começou com 50 pessoas dentro de um quintal pequeno e hoje invade a mente de todos que escutam o som zumbido do mosquito.", "Since 2018, we have gathered thousands of people around our shared passion for music, culture and life. Canjala is the flagship of a dream that started with 50 people in a small backyard and today invades the minds of all who hear the buzzing sound of the mosquito.")}
+                {t("Desde 2017, temos reunido milhares de pessoas em torno da nossa paixão partilhada pela música, pela cultura e pela vida. A Canjala é o carro chefe de um sonho que começou com 50 pessoas dentro de um quintal pequeno e hoje invade a mente de todos que escutam o som zumbido do mosquito.", "Since 2017, we have gathered thousands of people around our shared passion for music, culture and life. Canjala is the flagship of a dream that started with 50 people in a small backyard and today invades the minds of all who hear the buzzing sound of the mosquito.")}
               </p>
             </motion.div>
             <motion.div
