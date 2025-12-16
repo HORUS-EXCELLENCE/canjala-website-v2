@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Calendar, MapPin, Music, Users, Instagram, Facebook, Youtube, Ticket, Menu, X } from "lucide-react";
 import { motion } from "framer-motion";
+import { HistorySection } from "@/components/HistorySection";
 
 interface Product {
   id: number;
@@ -34,7 +35,7 @@ export default function Home() {
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
         <div className="container mx-auto flex items-center justify-between py-4">
-          <motion.a 
+          <motion.a
             href="/"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -151,20 +152,20 @@ export default function Home() {
 
       {/* Hero Section - Full Screen with Parallax Effect */}
       <section className="relative h-screen overflow-hidden">
-        <motion.div 
+        <motion.div
           initial={{ scale: 1.1 }}
           animate={{ scale: 1 }}
           transition={{ duration: 1.5 }}
           className="absolute inset-0"
         >
-          <img 
-            src="/hero-canjala.jpg" 
-            alt="Canjala Festival" 
+          <img
+            src="/hero-canjala.jpg"
+            alt="Canjala Festival"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-background" />
         </motion.div>
-        
+
         <div className="relative h-full container flex flex-col items-center justify-center text-center text-white">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -172,12 +173,12 @@ export default function Home() {
             transition={{ delay: 0.3, duration: 0.8 }}
           >
             <div className="mb-0 pb-0">
-  <h1 className="text-5xl md:text-8xl font-black mb-20 mt-30">CANJALA</h1>
-</div>
+              <h1 className="text-5xl md:text-8xl font-black mb-20 mt-30">CANJALA</h1>
+            </div>
 
-<p className="text-xl md:text-3xl font-bold text-accent mt-[-35px]">
-  {t("A Kitota Virou Festival", "The Kitota Became Festival")}
-</p>
+            <p className="text-xl md:text-3xl font-bold text-accent mt-[-35px]">
+              {t("A Kitota Virou Festival", "The Kitota Became Festival")}
+            </p>
 
             <p className="text-lg md:text-xl mb-7 max-w-2xl mx-auto opacity-90">
               {t("Canjala não é só um lugar, Canjala é a essência de Angola, é a raiz, é o encontro daqueles que celebram juntos as suas vitórias", "Canjala is not just a place, Canjala is the essence of Angola, it is the root, it is the meeting of those who celebrate their victories together")}
@@ -266,9 +267,9 @@ export default function Home() {
               viewport={{ once: true }}
               className="relative"
             >
-              <img 
-                src="/crowd.jpg" 
-                alt="Celebração Canjala" 
+              <img
+                src="/crowd.jpg"
+                alt="Celebração Canjala"
                 className="rounded-lg shadow-2xl"
               />
             </motion.div>
@@ -300,9 +301,9 @@ export default function Home() {
               viewport={{ once: true }}
               className="relative h-96 rounded-lg overflow-hidden group"
             >
-              <img 
-                src="/palco.jpg" 
-                alt="Produção de Palco" 
+              <img
+                src="/palco.jpg"
+                alt="Produção de Palco"
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
@@ -319,9 +320,9 @@ export default function Home() {
               transition={{ delay: 0.1 }}
               className="relative h-96 rounded-lg overflow-hidden group"
             >
-              <img 
-                src="/festival-atmosphere.jpg" 
-                alt="Atmosfera do Festival" 
+              <img
+                src="/festival-atmosphere.jpg"
+                alt="Atmosfera do Festival"
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
@@ -376,19 +377,18 @@ export default function Home() {
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="order-2 md:order-1 rounded-lg overflow-hidden shadow-2xl"
-              style={{ width: '600px', height: '1000px' }}
+              className="order-2 md:order-1 rounded-lg overflow-hidden shadow-2xl w-full max-w-[600px] mx-auto aspect-[3/5]"
             >
-              <video 
+              <video
                 autoPlay
                 muted
                 loop
                 className="w-full h-full object-cover"
               >
                 <source src="/video.mp4" type="video/mp4" />
-                <img 
-                  src="/cultural.png" 
-                  alt="Celebração Cultural" 
+                <img
+                  src="/cultural.png"
+                  alt="Celebração Cultural"
                   className="w-full h-full object-cover"
                 />
               </video>
@@ -414,58 +414,7 @@ export default function Home() {
       </section>
 
       {/* Growth Timeline */}
-      <section id="historia" className="py-32 bg-background">
-        <div className="container">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-5xl md:text-6xl font-black mb-6">
-              {t("O Nosso", "Our")} <span className="text-primary">{t("Crescimento", "Growth")}</span>
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              {t("Desde 2018, o Canjala tem crescido exponencialmente, consolidando-se como o maior festival de Angola", "Since 2018, Canjala has grown exponentially, establishing itself as Angola's largest festival")}
-            </p>
-          </motion.div>
-
-          <div className="max-w-4xl mx-auto">
-            {[
-              { year: "2018", title: t("O Início", "The Beginning"), participants: "287", description: t("Zenza do Itombe como teste de conceito. 50 pessoas num quintal, 287 compareceram", "Zenza do Itombe as a concept test. 50 people in a backyard, 287 attended") },
-              { year: "2018-2019", title: t("Crescimento", "Growth"), description: t("Da Canjala 2018 ao Kuito Kuanavale 2018, de 400 a 1600 pessoas. Expansão durante tempos desafiantes", "From Canjala 2018 to Kuito Kuanavale 2018, from 400 to 1600 people. Expansion during challenging times") },
-              { year: "2022-2023", title: t("Consolidação", "Consolidation"), description: t("Acordos de Bicesse. Milhares de pessoas reunidas", "Acordos de Bicesse. Thousands of people gathered") },
-              { year: "2024", title: t("Recorde", "Record"), participants: "4.360+", description: t("Recorde de participantes e produção de classe mundial", "Record number of participants and world-class production") },
-              { year: "2025", title: t("O Futuro", "The Future"), description: t("Expectativa de crescimento contínuo e novas surpresas", "Expectation of continuous growth and new surprises") }
-            ].map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="relative pl-8 pb-12 border-l-4 border-primary last:border-l-0 last:pb-0"
-              >
-                <div className="absolute left-0 top-0 w-8 h-8 -ml-[18px] bg-primary rounded-full border-4 border-background" />
-                <div className="bg-card p-6 rounded-lg shadow-md">
-                  <div className="flex items-baseline gap-4 mb-2">
-                    <span className="text-3xl font-black text-primary">{item.year}</span>
-                    
-                    {item.title && (
-                      <span className="text-2xl font-bold">{item.title}</span>
-                    )}
-                  </div>
-
-                    {item.participants && (
-                      <span className="text-2xl font-bold text-accent">{item.participants} {t("pessoas", "people")}</span>
-                    )}
-                  <p className="text-muted-foreground">{item.description}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <HistorySection />
 
       {/* Products Section */}
       <section className="py-10 bg-background" id='merch'>
@@ -485,7 +434,7 @@ export default function Home() {
           </motion.div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {products.slice(0, 8).map((product: Product) => (
+            {products.slice(0, 4).map((product: Product) => (
               <motion.div
                 key={product.id}
                 initial={{ opacity: 0, scale: 0.95 }}
@@ -495,9 +444,9 @@ export default function Home() {
               >
                 <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 group">
                   <div className="relative overflow-hidden">
-                    <img 
-                      src={product.full_cover} 
-                      alt={product.name} 
+                    <img
+                      src={product.full_cover}
+                      alt={product.name}
                       className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -510,8 +459,8 @@ export default function Home() {
                         <span className="text-sm text-green-600 font-semibold">{t("Em stock", "In stock")}</span>
                       )}
                     </div>
-                    <Button 
-                      className="w-full bg-primary hover:bg-primary/90" 
+                    <Button
+                      className="w-full bg-primary hover:bg-primary/90"
                       onClick={() => window.open('https://loja.canjala.com', '_blank')}
                     >
                       {t("Ver na Loja", "View in Store")}
@@ -523,9 +472,9 @@ export default function Home() {
           </div>
 
           <div className="text-center mt-12">
-            <Button 
-              size="lg" 
-              variant="outline" 
+            <Button
+              size="lg"
+              variant="outline"
               className="px-8 py-4 text-lg font-semibold border-primary text-primary hover:bg-primary hover:text-white"
               onClick={() => window.open('https://loja.canjala.com', '_blank')}
             >
@@ -654,7 +603,7 @@ export default function Home() {
                 </a>
                 <a href="https://www.tiktok.com/@teamarrogancia" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
                   <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+                    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
                   </svg>
                 </a>
                 <a href="https://www.youtube.com/@teamarrogancia" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">

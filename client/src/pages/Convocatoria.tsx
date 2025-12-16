@@ -48,7 +48,7 @@ const FAQComponent: React.FC = () => {
 
                 {openItem === item.id && (
                   <div className="pb-4 pr-8">
-                    <p className="text-gray-600 text-sm leading-relaxed">{item.answer}</p>
+                    <p className="text-gray-600 text-sm leading-relaxed text-justify">{item.answer}</p>
                   </div>
                 )}
               </div>
@@ -74,11 +74,11 @@ export default function Home() {
           </a>
 
           <div className="hidden md:flex items-center gap-8">
-            <a href="#sobre" className="text-sm font-semibold hover:text-primary transition-colors">{t('Sobre', 'About')}</a>
-            <a href="#experiencia" className="text-sm font-semibold hover:text-primary transition-colors">{t('Experiência', 'Experience')}</a>
+            <a href="/#sobre" className="text-sm font-semibold hover:text-primary transition-colors">{t('Sobre', 'About')}</a>
+            <a href="/#experiencia" className="text-sm font-semibold hover:text-primary transition-colors">{t('Experiência', 'Experience')}</a>
             <a href="#historia" className="text-sm font-semibold hover:text-primary transition-colors">{t('História', 'History')}</a>
             <a href="https://loja.canjala.com" className="text-sm font-semibold hover:text-primary transition-colors">{t('Loja', 'Store')}</a>
-            <a href="#contacto" className="text-sm font-semibold hover:text-primary transition-colors">{t('Contacto', 'Contact')}</a>
+            <a href="/#contacto" className="text-sm font-semibold hover:text-primary transition-colors">{t('Contacto', 'Contact')}</a>
             <LanguageSwitcher />
             {user?.role === 'admin' && (
               <Button size="sm" variant="outline" onClick={() => (window.location.href = '/admin')}>Admin</Button>
@@ -107,7 +107,7 @@ export default function Home() {
           </motion.div>
         </div>
 
-        
+
 
         {/* CTA Section */}
         <section id="contacto" className="py-0 bg-gradient-to-br from-primary via-secondary to-accent text-white relative overflow-hidden">
@@ -153,10 +153,10 @@ export default function Home() {
             <div>
               <h4 className="font-bold mb-4">{t("Links Rápidos", "Quick Links")}</h4>
               <ul className="space-y-2 opacity-80">
-                <li><a href="#sobre" className="hover:opacity-100 transition-opacity">{t("Sobre", "About")}</a></li>
-                <li><a href="#experiencia" className="hover:opacity-100 transition-opacity">{t("Experiência", "Experience")}</a></li>
-                <li><a href="#historia" className="hover:opacity-100 transition-opacity">{t("História", "History")}</a></li>
-                <li><a href="#contacto" className="hover:opacity-100 transition-opacity">{t("Contacto", "Contact")}</a></li>
+                <li><a href="/#sobre" className="hover:opacity-100 transition-opacity">{t("Sobre", "About")}</a></li>
+                <li><a href="/#experiencia" className="hover:opacity-100 transition-opacity">{t("Experiência", "Experience")}</a></li>
+                <li><a href="/#historia" className="hover:opacity-100 transition-opacity">{t("História", "History")}</a></li>
+                <li><a href="/#contacto" className="hover:opacity-100 transition-opacity">{t("Contacto", "Contact")}</a></li>
               </ul>
             </div>
             <div>
