@@ -6,7 +6,7 @@ export function HistorySection() {
     const { t } = useLanguage();
 
     const historyItems = [
-        { year: "2018", title: t("O Início", "The Beginning"), participants: "287", description: t("Zenza do Itombe como teste de conceito. 50 pessoas num quintal, 287 compareceram", "Zenza do Itombe as a concept test. 50 people in a backyard, 287 attended") },
+        { year: "2017", title: t("O Início", "The Beginning"), participants: "287", description: t("Zenza do Itombe como teste de conceito. 50 pessoas num quintal, 287 compareceram", "Zenza do Itombe as a concept test. 50 people in a backyard, 287 attended") },
         { year: "2018-2019", title: t("Crescimento", "Growth"), description: t("Da Canjala 2018 ao Kuito Kuanavale 2018, de 400 a 1600 pessoas. Expansão durante tempos desafiantes", "From Canjala 2018 to Kuito Kuanavale 2018, from 400 to 1600 people. Expansion during challenging times") },
         { year: "2022-2023", title: t("Consolidação", "Consolidation"), description: t("Acordos de Bicesse. Milhares de pessoas reunidas", "Acordos de Bicesse. Thousands of people gathered") },
         { year: "2024", title: t("Recorde", "Record"), participants: "4.360+", description: t("Recorde de participantes e produção de classe mundial", "Record number of participants and world-class production") },
@@ -26,7 +26,7 @@ export function HistorySection() {
                         {t("O Nosso", "Our")} <span className="text-primary">{t("Crescimento", "Growth")}</span>
                     </h2>
                     <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                        {t("Desde 2018, o Canjala tem crescido exponencialmente, consolidando-se como o maior festival de Angola", "Since 2018, Canjala has grown exponentially, establishing itself as Angola's largest festival")}
+                        {t("Desde 2017, o Canjala tem crescido exponencialmente, consolidando-se como o maior festival de Angola", "Since 2017, Canjala has grown exponentially, establishing itself as Angola's largest festival")}
                     </p>
                 </motion.div>
 
