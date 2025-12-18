@@ -223,7 +223,7 @@ export default function Home() {
               { number: "4.360+", label: t("Participantes 2024", "2024 Participants"), icon: Users },
               { number: "11", label: t("Edições Realizadas", "Editions Held"), icon: Calendar },
               { number: "100%", label: t("Convocações Esgotadas", "Tickets Sold Out"), icon: Ticket },
-              { number: "2017", label: t("Ano de Fundação", "Year Founded"), icon: Music }
+              { number: "2018", label: t("Ano de Fundação", "Year Founded"), icon: Music }
             ].map((stat, index) => (
               <motion.div
                 key={index}
@@ -258,7 +258,7 @@ export default function Home() {
                 {t("A Canjala é mais do que um festival de música, é o que em Kimbundu chamamos de Kitota. É uma celebração da cultura angolana, um espaço onde a música, a arte e a comunidade se encontram. A prova de que podemos começar num quintal e expandir pro país inteiro.", "Canjala is more than a music festival, it's what we call Kitota in Kimbundu. It's a celebration of Angolan culture, a space where music, art and community meet. Proof that we can start in a backyard and expand to the whole country.")}
               </p>
               <p className="text-lg md:text-xl mb-6 opacity-90">
-                {t("Desde 2017, temos reunido milhares de pessoas em torno da nossa paixão partilhada pela música, pela cultura e pela vida. A Canjala é o carro chefe de um sonho que começou com 50 pessoas dentro de um quintal pequeno e hoje invade a mente de todos que escutam o som zumbido do mosquito.", "Since 2017, we have gathered thousands of people around our shared passion for music, culture and life. Canjala is the flagship of a dream that started with 50 people in a small backyard and today invades the minds of all who hear the buzzing sound of the mosquito.")}
+                {t("Desde 2018, temos reunido milhares de pessoas em torno da nossa paixão partilhada pela música, pela cultura e pela vida. A Canjala é o carro chefe de um sonho que começou com 50 pessoas dentro de um quintal pequeno e hoje invade a mente de todos que escutam o som zumbido do mosquito.", "Since 2018, we have gathered thousands of people around our shared passion for music, culture and life. Canjala is the flagship of a dream that started with 50 people in a small backyard and today invades the minds of all who hear the buzzing sound of the mosquito.")}
               </p>
             </motion.div>
             <motion.div
@@ -377,7 +377,8 @@ export default function Home() {
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="order-2 md:order-1 rounded-lg overflow-hidden shadow-2xl w-full max-w-[600px] mx-auto aspect-[3/5]"
+              className="order-2 md:order-1 rounded-lg overflow-hidden shadow-2xl"
+              style={{ width: '600px', height: '1000px' }}
             >
               <video
                 autoPlay
@@ -403,7 +404,7 @@ export default function Home() {
                 {t("Tradição e Inovação", "Tradition and Innovation")}
               </h2>
               <p className="text-lg md:text-xl mb-6 opacity-90">
-                {t("O Canjala celebra o casamento perfeito entre a tradição angolana e a inovação contemporânea. Aqui, os tambores ancestrais encontram os beats electrónicos, e as gerações dançam juntas ao ritmo da nossa cultura.", "Canjala celebrates the perfect marriage between Angolan tradition and contemporary innovation. Here, ancestral drums meet electronic beats, and generations dance together to the rhythm of our culture.")}
+                {t("A Canjala celebra o casamento perfeito entre a tradição angolana e a inovação contemporânea. Aqui, os tambores ancestrais encontram os beats electrónicos, e as gerações dançam juntas ao ritmo da nossa cultura.", "Canjala celebrates the perfect marriage between Angolan tradition and contemporary innovation. Here, ancestral drums meet electronic beats, and generations dance together to the rhythm of our culture.")}
               </p>
               <p className="text-lg md:text-xl opacity-90">
                 {t("Como diz a música \"Reunir\" de Teta Lando, que resume a essência dos nossos eventos: celebramos as conquistas de todos, acreditamos que é possível fazer em Angola, e continuamos a crescer juntos.", "As the song \"Reunir\" by Teta Lando says, which summarizes the essence of our events: we celebrate everyone's achievements, we believe it is possible to do in Angola, and we continue to grow together.")}
