@@ -7,6 +7,7 @@ import { Card } from "@/components/ui/card";
 import { Calendar, MapPin, Music, Users, Instagram, Facebook, Youtube, Ticket, Menu, X } from "lucide-react";
 import { motion } from "framer-motion";
 import { HistorySection } from "@/components/HistorySection";
+import { BicesseSection } from "@/components/BicesseSection";
 
 interface Product {
   id: number;
@@ -486,29 +487,7 @@ export default function Home() {
       </section>
 
       {/* Acordos de Bicesse Mention */}
-      <section className="py-32 bg-accent text-accent-foreground">
-        <div className="container">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="max-w-4xl mx-auto text-center"
-          >
-            <h2 className="text-5xl md:text-6xl font-black mb-6">
-              {t("Acordos de Bicesse", "Acordos de Bicesse")}
-            </h2>
-            <p className="text-xl md:text-2xl mb-8">
-              {t("O Segundo Maior Festival", "The Second Largest Festival")}
-            </p>
-            <p className="text-lg mb-8 opacity-90">
-              {t("Um festival temático, com narrativa e storytelling forte, conceito visual e mensagem própria, que reinterpretam o espírito dos Acordos de Bicesse de 1991, mas agora como símbolo de unidade, esperança e cultura.", "A thematic festival, with strong narrative and storytelling, visual concept and own message, that reinterpret the spirit of the Acordos de Bicesse of 1991, but now as a symbol of unity, hope and culture.")}
-            </p>
-            <Button size="lg" variant="outline" className="bg-white/10 backdrop-blur-sm border-white/30 hover:bg-white/20">
-              {t("Saber Mais sobre Acordos de Bicesse", "Learn More about Acordos de Bicesse")}
-            </Button>
-          </motion.div>
-        </div>
-      </section>
+      <BicesseSection />
 
       {/* Team Arrogância Section */}
       <section className="py-32 bg-background">
