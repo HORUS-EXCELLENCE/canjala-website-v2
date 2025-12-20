@@ -200,7 +200,7 @@ export default function Home() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1, duration: 1 }}
-            className="absolute bottom-0 top-165 left-1/2 transform -translate-x-1/2"
+            className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
           >
             <div className="flex flex-col items-center gap-2">
               <p className="text-sm font-semibold">{t("Descobre mais", "Discover more")}</p>
@@ -378,8 +378,7 @@ export default function Home() {
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="order-2 md:order-1 rounded-lg overflow-hidden shadow-2xl"
-              style={{ width: '600px', height: '1000px' }}
+              className="order-2 md:order-1 rounded-lg overflow-hidden shadow-2xl w-full max-w-lg mx-auto md:max-w-none h-[500px] md:h-[800px]"
             >
               <video
                 autoPlay
