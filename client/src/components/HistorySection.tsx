@@ -26,7 +26,7 @@ export function HistorySection() {
                         {t("O Nosso", "Our")} <span className="text-primary">{t("Crescimento", "Growth")}</span>
                     </h2>
                     <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                        {t("Desde 2017, o Canjala tem crescido exponencialmente, consolidando-se como o maior festival de Angola", "Since 2017, Canjala has grown exponentially, establishing itself as Angola's largest festival")}
+                        {t("Desde 2017, a Canjala tem crescido exponencialmente, consolidando-se como o maior festival de Angola", "Since 2017, Canjala has grown exponentially, establishing itself as Angola's largest festival")}
                     </p>
                 </motion.div>
 

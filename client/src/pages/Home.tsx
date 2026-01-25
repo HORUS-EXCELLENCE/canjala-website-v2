@@ -8,6 +8,7 @@ import { Calendar, MapPin, Music, Users, Instagram, Facebook, Youtube, Ticket, M
 import { motion } from "framer-motion";
 import { HistorySection } from "@/components/HistorySection";
 import { BicesseSection } from "@/components/BicesseSection";
+import { PressSection } from "@/components/PressSection";
 
 interface Product {
   id: number;
@@ -49,6 +50,7 @@ export default function Home() {
             <a href="#experiencia" className="text-sm font-semibold hover:text-primary transition-colors">{t("Experiência", "Experience")}</a>
             <a href="#historia" className="text-sm font-semibold hover:text-primary transition-colors">{t("História", "History")}</a>
             <a href="#merch" className="text-sm font-semibold hover:text-primary transition-colors">{t("Loja", "Store")}</a>
+            <a href="#imprensa" className="text-sm font-semibold hover:text-primary transition-colors">{t("Imprensa", "Press")}</a>
             <a href="#contacto" className="text-sm font-semibold hover:text-primary transition-colors">{t("Contacto", "Contact")}</a>
             <LanguageSwitcher />
             {user?.role === "admin" && (
@@ -112,6 +114,13 @@ export default function Home() {
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {t("Loja", "Store")}
+              </a>
+              <a
+                href="#imprensa"
+                className="text-sm font-semibold hover:text-primary transition-colors py-2"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {t("Imprensa", "Press")}
               </a>
               <a
                 href="#contacto"
@@ -488,6 +497,9 @@ export default function Home() {
       {/* Acordos de Bicesse Mention */}
       <BicesseSection />
 
+      {/* Press Section */}
+      <PressSection />
+
       {/* Team Arrogância Section */}
       <section className="py-32 bg-background">
         <div className="container">
@@ -561,6 +573,7 @@ export default function Home() {
                 <li><a href="#sobre" className="hover:opacity-100 transition-opacity">{t("Sobre", "About")}</a></li>
                 <li><a href="#experiencia" className="hover:opacity-100 transition-opacity">{t("Experiência", "Experience")}</a></li>
                 <li><a href="#historia" className="hover:opacity-100 transition-opacity">{t("História", "History")}</a></li>
+                <li><a href="#imprensa" className="hover:opacity-100 transition-opacity">{t("Imprensa", "Press")}</a></li>
                 <li><a href="#contacto" className="hover:opacity-100 transition-opacity">{t("Contacto", "Contact")}</a></li>
               </ul>
             </div>

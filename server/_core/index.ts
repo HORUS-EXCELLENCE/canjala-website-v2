@@ -33,6 +33,36 @@ async function startServer() {
   // Configure body parser with larger size limit for file uploads
   app.use(express.json({ limit: "50mb" }));
   app.use(express.urlencoded({ limit: "50mb", extended: true }));
+
+  // Image proxy endpoint
+  app.get("/api/image-proxy", async (req, res) => {
+    try {
+      const imageUrl = req.query.url as string;
+
+      if (!imageUrl) {
+        return res.status(400).send("Missing url parameter");
+      }
+
+      const response = await fetch(imageUrl);
+
+      if (!response.ok) {
+        console.error(`Failed to fetch image: ${response.statusText}`);
+        return res.status(response.status).send("Failed to fetch image");
+      }
+
+      const arrayBuffer = await response.arrayBuffer();
+      const buffer = Buffer.from(arrayBuffer);
+      const contentType = response.headers.get('content-type') || 'image/jpeg';
+
+      res.setHeader('Content-Type', contentType);
+      res.setHeader('Cache-Control', 'public, max-age=86400'); // Cache for 1 day
+      res.send(buffer);
+    } catch (error) {
+      console.error('Image proxy error:', error);
+      res.status(500).send("Failed to fetch image");
+    }
+  });
+
   // OAuth callback under /api/oauth/callback
   registerOAuthRoutes(app);
   // tRPC API
