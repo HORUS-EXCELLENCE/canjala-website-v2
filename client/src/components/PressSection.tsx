@@ -21,6 +21,39 @@ export function PressSection() {
 
     const pressArticles: PressArticle[] = [
         {
+            id: 6,
+            title: "CCB acolhe 7.ª edição da festa da 'Canjala'",
+            titleEn: "CCB hosts 7th edition of 'Canjala' festival",
+            outlet: "Jornal de Angola",
+            date: "27 Dez 2025",
+            thumbnail: "/image copy.png",
+            url: "https://www.jornaldeangola.ao/noticias/5/cultura/655106/ccb-acolhe-7%C2%AA-edi%C3%A7%C3%A3o-da-festa-da-%E2%80%9Ccanjala%E2%80%9D",
+            excerpt: "Centro de Convenções de Benguela recebe a maior celebração de música e cultura urbana de Angola",
+            excerptEn: "Benguela Convention Center receives the largest celebration of music and urban culture in Angola"
+        },
+        {
+            id: 3,
+            title: "Festival Canjala alia música, cidadania e experiência imersiva em Angola",
+            titleEn: "Festival Canjala combines music, citizenship and immersive experience in Angola",
+            outlet: "Público",
+            date: "22 Dez 2025",
+            thumbnail: "/crowd.jpg",
+            url: "https://www.publico.pt/2025/12/22/publico-brasil/noticia/festival-canjala-alia-musica-cidadania-experiencia-imersiva-angola-2158980",
+            excerpt: "Lançado em 2017 num quintal em Luanda, evento hoje atrai mais de cinco mil pessoas em programação com 12 horas seguidas de música",
+            excerptEn: "Launched in 2017 in a backyard in Luanda, the event now attracts more than five thousand people with 12 hours of continuous music"
+        },
+        {
+            id: 5,
+            title: "El festival secreto de Luanda reinventa la música electrónica",
+            titleEn: "The secret festival of Luanda reinvents electronic music",
+            outlet: "DJM Magazine",
+            date: "19 Dez 2025",
+            thumbnail: "/crowd.jpg",
+            url: "https://djmmagazine.tv/el-festival-secreto-de-luanda-reinventa-la-musica-electronica/",
+            excerpt: "Sin cartel anunciado y con acceso exclusivo mediante invitación, Canjala demuestra que el futuro de la innovación cultural es africano",
+            excerptEn: "Without announced lineup and with exclusive invitation-only access, Canjala demonstrates that the future of cultural innovation is African"
+        },
+        {
             id: 1,
             title: "Sem cartaz e sem bilhetes à venda, o Festival Canjala tornou-se numa referência em Angola",
             titleEn: "Without lineup or tickets for sale, Festival Canjala has become a reference in Angola",
@@ -43,17 +76,6 @@ export function PressSection() {
             excerptEn: "The festival proves that the future of cultural innovation is also African, with 80% of tickets sold out in 8 days without an announced lineup"
         },
         {
-            id: 3,
-            title: "Festival Canjala alia música, cidadania e experiência imersiva em Angola",
-            titleEn: "Festival Canjala combines music, citizenship and immersive experience in Angola",
-            outlet: "Público",
-            date: "22 Dez 2025",
-            thumbnail: "/crowd.jpg",
-            url: "https://www.publico.pt/2025/12/22/publico-brasil/noticia/festival-canjala-alia-musica-cidadania-experiencia-imersiva-angola-2158980",
-            excerpt: "Lançado em 2017 num quintal em Luanda, evento hoje atrai mais de cinco mil pessoas em programação com 12 horas seguidas de música",
-            excerptEn: "Launched in 2017 in a backyard in Luanda, the event now attracts more than five thousand people with 12 hours of continuous music"
-        },
-        {
             id: 4,
             title: "Festival Canjala regressa a Luanda a 27 de dezembro sem cartaz e enche à base da confiança",
             titleEn: "Festival Canjala returns to Luanda on December 27 without lineup and fills up based on trust",
@@ -63,28 +85,6 @@ export function PressSection() {
             url: "https://www.okusaka.com/2025/12/festival-canjala-regressa-luanda-27-de.html",
             excerpt: "80% da lotação foi preenchida nos primeiros 8 dias, consolidando-se como um dos maiores festivais de Angola e caso singular de inovação cultural",
             excerptEn: "80% of capacity was filled in the first 8 days, consolidating itself as one of the largest festivals in Angola and a unique case of cultural innovation"
-        },
-        {
-            id: 5,
-            title: "El festival secreto de Luanda reinventa la música electrónica",
-            titleEn: "The secret festival of Luanda reinvents electronic music",
-            outlet: "DJM Magazine",
-            date: "19 Dez 2025",
-            thumbnail: "/crowd.jpg",
-            url: "https://djmmagazine.tv/el-festival-secreto-de-luanda-reinventa-la-musica-electronica/",
-            excerpt: "Sin cartel anunciado y con acceso exclusivo mediante invitación, Canjala demuestra que el futuro de la innovación cultural es africano",
-            excerptEn: "Without announced lineup and with exclusive invitation-only access, Canjala demonstrates that the future of cultural innovation is African"
-        },
-        {
-            id: 6,
-            title: "CCB acolhe 7.ª edição da festa da 'Canjala'",
-            titleEn: "CCB hosts 7th edition of 'Canjala' festival",
-            outlet: "Jornal de Angola",
-            date: "27 Dez 2025",
-            thumbnail: "/image copy.png",
-            url: "https://www.jornaldeangola.ao/noticias/5/cultura/655106/ccb-acolhe-7%C2%AA-edi%C3%A7%C3%A3o-da-festa-da-%E2%80%9Ccanjala%E2%80%9D",
-            excerpt: "Centro de Convenções de Benguela recebe a maior celebração de música e cultura urbana de Angola",
-            excerptEn: "Benguela Convention Center receives the largest celebration of music and urban culture in Angola"
         }
     ];
 
