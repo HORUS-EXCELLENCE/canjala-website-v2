@@ -9,6 +9,7 @@ import { motion } from "framer-motion";
 import { HistorySection } from "@/components/HistorySection";
 import { BicesseSection } from "@/components/BicesseSection";
 import { PressSection } from "@/components/PressSection";
+import { ContactSection } from "@/components/ContactSection";
 
 interface Product {
   id: number;
@@ -531,7 +532,7 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section id="contacto" className="py-32 bg-gradient-to-br from-primary via-secondary to-accent text-white relative overflow-hidden">
+      <section className="py-32 bg-gradient-to-br from-primary via-secondary to-accent text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0" style={{ backgroundImage: "url('/hero-canjala.jpg')", backgroundSize: "cover", backgroundPosition: "center" }} />
         </div>
@@ -559,11 +560,14 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Contact Section */}
+      <ContactSection />
+
       {/* Footer */}
       <footer className="bg-foreground text-background py-16">
         <div className="container">
-          <div className="grid md:grid-cols-4 gap-12 mb-12">
-            <div>
+          <div className="grid md:grid-cols-5 gap-12 mb-12">
+            <div className="md:col-span-1">
               <img src="/logo.png" alt="Canjala" className="h-16 w-auto mb-4" />
               <p className="opacity-80">{t("A Kitota virou Festival", "The Kitota became Festival")}</p>
             </div>
@@ -582,6 +586,13 @@ export default function Home() {
               <ul className="space-y-2 opacity-80">
                 <li>{t("Canjala Festival", "Canjala Festival")}</li>
                 <li>{t("Acordos de Bicesse", "Acordos de Bicesse")}</li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-bold mb-4">{t("Contactos", "Contact")}</h4>
+              <ul className="space-y-2 opacity-80">
+                <li><a href="mailto:info@mysteriumgroup.com" className="hover:opacity-100 transition-opacity">info@mysteriumgroup.com</a></li>
+                <li><a href="tel:+244957107642" className="hover:opacity-100 transition-opacity">+244 957 107 642</a></li>
               </ul>
             </div>
             <div>
