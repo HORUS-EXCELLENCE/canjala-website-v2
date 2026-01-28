@@ -10,6 +10,7 @@ import { HistorySection } from "@/components/HistorySection";
 import { BicesseSection } from "@/components/BicesseSection";
 import { PressSection } from "@/components/PressSection";
 import { ContactSection } from "@/components/ContactSection";
+import { RulesSection } from "@/components/RulesSection";
 
 interface Product {
   id: number;
@@ -494,7 +495,8 @@ export default function Home() {
           </div>
         </div>
       </section>
-
+      {/* Rules Section */}
+      <RulesSection />
       {/* Acordos de Bicesse Mention */}
       <BicesseSection />
 
@@ -531,7 +533,13 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CTA Section */}
+      
+
+      
+
+      {/* Contact Section */}
+      <ContactSection />
+
       <section className="py-32 bg-gradient-to-br from-primary via-secondary to-accent text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0" style={{ backgroundImage: "url('/hero-canjala.jpg')", backgroundSize: "cover", backgroundPosition: "center" }} />
@@ -559,9 +567,6 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
-
-      {/* Contact Section */}
-      <ContactSection />
 
       {/* Footer */}
       <footer className="bg-foreground text-background py-16">
