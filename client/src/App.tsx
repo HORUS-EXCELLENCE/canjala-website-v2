@@ -8,6 +8,7 @@ import { LanguageProvider } from "./contexts/LanguageContext";
 import Convocatoria from "./pages/Convocatoria";
 import Home from "./pages/Home";
 import Admin from "./pages/Admin";
+import TermsAndConditions from "./pages/TermsAndConditions";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -17,6 +18,7 @@ function Router() {
       <Route path={"/admin"} component={Admin} />
       <Route path={"/404"} component={NotFound} />
       <Route path={"/convocatoria"} component={Convocatoria} />
+      <Route path={"/termos-e-condicoes"} component={TermsAndConditions} />
       {/* Final fallback route */}
       <Route component={NotFound} />
     </Switch>
@@ -33,7 +35,7 @@ function App() {
     <ErrorBoundary>
       <ThemeProvider
         defaultTheme="light"
-        // switchable
+      // switchable
       >
         <LanguageProvider>
           <TooltipProvider>

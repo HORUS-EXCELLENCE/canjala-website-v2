@@ -141,6 +141,12 @@ export function RulesSection() {
                                 <p className="text-sm text-muted-foreground">
                                     Na Canjala temos câmeras de segurança durante todo o evento para fins de asseguramento do evento. Caso não concordes, não compra a convocatória. Caso decidas comprar, temos a equipa disponível para qualquer informação, caso alguma situação anómala aconteça.
                                 </p>
+                                <p className="text-sm text-muted-foreground mt-4 font-semibold">
+                                    {t(
+                                        "A aquisição de bilhete para o evento implica a aceitação plena, irrevogável e sem reservas dos presentes Termos e Condições, os quais se consideram conhecidos e vinculativos para todos os participantes.",
+                                        "The purchase of a ticket for the event implies full, irrevocable and unreserved acceptance of these Terms and Conditions, which are considered known and binding for all participants."
+                                    )}
+                                </p>
                             </div>
                         </div>
                     </Card>

@@ -156,7 +156,8 @@ export default function Home() {
                 <li><a href="/#sobre" className="hover:opacity-100 transition-opacity">{t("Sobre", "About")}</a></li>
                 <li><a href="/#experiencia" className="hover:opacity-100 transition-opacity">{t("Experiência", "Experience")}</a></li>
                 <li><a href="/#historia" className="hover:opacity-100 transition-opacity">{t("História", "History")}</a></li>
-                <li><a href="/#contacto" className="hover:opacity-100 transition-opacity">{t("Contacto", "Contact")}</a></li>
+                <li><a href="/termos-e-condicoes" className="hover:opacity-100 transition-opacity font-semibold">{t("Termos e Condições", "Terms and Conditions")}</a></li>
+
               </ul>
             </div>
             <div>
@@ -187,7 +188,12 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="border-t border-background/20 pt-8 text-center opacity-60">
+          <div className="border-t border-background/20 pt-8 text-center text-sm opacity-60">
+            <p className="mb-2">
+              {t("Ao navegar neste site ou adquirir uma convocatória, o utilizador aceita os ", "By navigating this site or purchasing a ticket, the user accepts the ")}
+              <a href="/termos-e-condicoes" className="underline hover:text-primary">{t("Termos e Condições", "Terms and Conditions")}</a>
+              {t(" e as Regras do Festival Canjala. Evento privado. Direito de admissão reservado.", " and the Rules of the Canjala Festival. Private event. Right of admission reserved.")}
+            </p>
             <p>&copy; 2025 {t("Team Arrogância. Todos os direitos reservados.", "Team Arrogância. All rights reserved.")}</p>
           </div>
         </div>
